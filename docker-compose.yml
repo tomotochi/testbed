@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  fountain:
+    build:
+      context: src/fountain
+      # dockerfile: src/fountain/Dockerfile
+    image: fountain
+    command: node main.js
+    env_file:
+    - ./src/fountain/.env.production

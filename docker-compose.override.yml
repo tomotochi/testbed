@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  fountain:
+    volumes:
+    # for development
+    - ./src/fountain:/src/fountain
+    working_dir: /src/fountain
+    env_file:
+    - ./src/fountain/.env.development
