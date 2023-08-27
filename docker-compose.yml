@@ -4,8 +4,14 @@ services:
   fountain:
     build:
       context: src/fountain
-      # dockerfile: src/fountain/Dockerfile
     image: fountain
-    command: node main.js
+    command: node index.js
     env_file:
-    - ./src/fountain/.env.production
+    - ./src/.env.production
+  fountainpy:
+    build:
+      context: src/fountainpy
+    image: fountainpy
+    command: node main.py
+    env_file:
+    - ./src/.env.production

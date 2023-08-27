@@ -7,4 +7,11 @@ services:
     - ./src/fountain:/src/fountain
     working_dir: /src/fountain
     env_file:
-    - ./src/fountain/.env.development
+    - ./src/.env.development
+  fountainpy:
+    volumes:
+    # for development
+    - ./src/fountainpy:/src/fountainpy
+    working_dir: /src/fountainpy
+    env_file:
+    - ./src/.env.development

@@ -14,8 +14,8 @@ const disClient = new DisClient({
   intents: [GatewayIntentBits.Guilds],
 })
 
-const guildID = '696412936691908668'
-const userID = '695663775541493771'
+const guildID = process.env.DISCORD_GUILD_ID
+const userID = process.env.DISCORD_USER_ID
 
 // unbClient.getUserBalance(guildID, userID).then(user => console.log(user))
 
@@ -28,6 +28,9 @@ var command = {
 		.setDescription('Replies with Pong!'),
 	async execute(interaction) {
 		await interaction.reply('Pong!');
+
+		unbClient.getUserBalance(guildID, userID).then(user => console.log(user))
+		unbClient.editUserBalance(guildID, userID, {cash: 234})
 	},
 }
 
