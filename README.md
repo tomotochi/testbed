@@ -25,3 +25,10 @@ cp .env.sample .env.development
 docker compose build
 docker compose run bot 
 ```
+## ファイル構成
+
+Replit由来のファイル
+- .replit
+- poetry.lock
+- pyproject.toml
+- replit.nix
