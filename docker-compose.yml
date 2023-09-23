@@ -1,17 +1,13 @@
 version: '3'
 
 services:
-  fountain:
+  bot:
     build:
-      context: src/fountain
-    image: fountain
+      context: src/bot
+    image: bot
+    command: python main.py
+  bot-nodejs:
+    build:
+      context: src/bot-nodejs
+    image: bot-nodejs
     command: node index.js
-    env_file:
-    - ./src/.env.production
-  fountainpy:
-    build:
-      context: src/fountainpy
-    image: fountainpy
-    command: node main.py
-    env_file:
-    - ./src/.env.production

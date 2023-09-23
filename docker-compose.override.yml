@@ -1,17 +1,17 @@
 version: '3'
 
 services:
-  fountain:
+  bot:
     volumes:
     # for development
-    - ./src/fountain:/src/fountain
-    working_dir: /src/fountain
+    - ./src/bot:/src/bot
+    working_dir: /src/bot
     env_file:
-    - ./src/.env.development
-  fountainpy:
+    - ./.env.development
+  bot-nodejs:
     volumes:
     # for development
-    - ./src/fountainpy:/src/fountainpy
-    working_dir: /src/fountainpy
+    - ./src/bot-nodejs:/src/bot-nodejs
+    working_dir: /src/bot-nodejs
     env_file:
-    - ./src/.env.development
+    - ./.env.development
