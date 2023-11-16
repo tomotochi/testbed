@@ -28,10 +28,12 @@ async def umb_test():
     print(f'user_balance: {user_balance}')
     user_balance = await umb_client.edit_user_balance(guild_id, user_id, cash=5)
     print(f'user_balance: {user_balance}')
+    inventory = await umb_client.get_iventory_item(guild_id, user_id, { 'sort': ['item_id'], 'page': 1 })
+    print(f'inventory: {inventory}')
 
 
 
-# asyncio.run(umb_test())
+asyncio.run(umb_test())
 
 # class Fountain(commands.Cog):
 #     def __init__(self, bot):
@@ -48,4 +50,4 @@ async def on_ready():
 
 # tree.sync(guild=guild_id)
 
-bot.run(os.environ['DISCORD_TOKEN'])
+# bot.run(os.environ['DISCORD_TOKEN'])
