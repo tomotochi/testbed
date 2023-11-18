@@ -3,3 +3,10 @@ node_modules
 !.env.sample
 yarn-error.log
 .pythonlibs
+
+# Rise and fall rate race
+src/bot-nodejs/distribution.json
+src/bot-nodejs/settlement.json
+src/bot-nodejs/snapshot.json
+src/bot-nodejs/favscore.json
+src/bot-nodejs/winner.json
