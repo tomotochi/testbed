@@ -10,3 +10,4 @@ src/bot-nodejs/settlement.json
 src/bot-nodejs/snapshot.json
 src/bot-nodejs/favscore.json
 src/bot-nodejs/winner.json
+src/bot-nodejs/*.log

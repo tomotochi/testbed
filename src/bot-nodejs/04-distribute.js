@@ -24,9 +24,10 @@ async function distribute() {
 
     while(retryCount <= retryCountMax) {
       try {
+        // ret: User {rank, user_id, cash, bank, total}
         let ret = await unbClient.editUserBalance(guildID, id, {cash: mp})
-
-        console.log(ret)
+        // console.log(ret)
+        fs.appendFileSync('04-distribute.log', `${id},${mp},${ret?.cash}\n`)
         await sleep(100)
         break
       } catch(ex) {
