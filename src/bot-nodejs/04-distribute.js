@@ -21,14 +21,12 @@ async function distribute() {
   for (let id of Object.keys(distribution)) {
     let mp = distribution[id]
     let retryCount = 0
-    let successful = false
 
     while(retryCount <= retryCountMax) {
       try {
         let ret = await unbClient.editUserBalance(guildID, id, {cash: mp})
 
         console.log(ret)
-        successful = true
         await sleep(100)
         break
       } catch(ex) {

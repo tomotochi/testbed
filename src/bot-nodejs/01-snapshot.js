@@ -28,24 +28,12 @@ const disClient = new DisClient({
 })
 
 const guildId = process.env.DISCORD_GUILD_ID
-const userId = process.env.DISCORD_USER_ID
 
 // unbインベントリのitemIdの配列（フィルタリング用）
 const targetItemIds = process.env.TARGET_ITEM_IDS.split(',')
 
 disClient.once(Events.ClientReady, (client) => {
   console.log(`Logged in as ${client.user.tag}`)
-
-  // unbClient.getUserBalance(guildId, userId).then(user => console.log(user))
-  // unbClient.editUserBalance(guildId, userId, { cash: 5 })
-  // unbClient.getInventoryItems(guildId, userId, { sort: 'id', page: 1 }).then(ret => console.log(ret.items))
-
-  // console.log(`Guild: ${disClient.guild}`)
-  // const guild = disClient.guilds.get(guildId)
-  // const members = guild.members.map(member => member.id);
-	// console.log(members)
-
-  // client.guild.members.fetch().then(m => console.log(m))
 })
 
 async function snapshot() {
@@ -88,14 +76,12 @@ async function snapshot() {
       processedMemberCount++
 
       let retryCount = 0
-      let successful = false
   
       while(retryCount <= retryCountMax) {
         try {
           ret = await unbClient.getInventoryItems(guildId, v.user.id)
           if (ret.totalPages > 1) console.error('THIS GUY HAS TONS OF ITEMS', v.user.id, v.user.username, v.user.globalName)
 
-          successful = true
           await sleep(100)
 
           results.push({

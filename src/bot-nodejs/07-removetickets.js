@@ -32,13 +32,11 @@ async function removeticket(){
       if (!targetItemIds.includes(item.id)) continue
   
       let retryCount = 0
-      let successful = false
     
       while(retryCount <= retryCountMax) {
         try {
           ret = await unbClient.removeInventoryItem(guildId, e.id, item.id, item.quantity)
     
-          successful = true
           await sleep(100)
           break
         } catch(ex) {
