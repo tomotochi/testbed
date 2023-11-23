@@ -10,8 +10,8 @@ const targetItemIds = [
 ]
 console.log(`targetItemIds: ${targetItemIds}`)
 
-// {id: mp}
-distribution = {}
+// [{id, mp}]
+distribution = []
 // {id(userid), mp}
 for (const e of snapshot) {
   // 加算するMP
@@ -23,7 +23,7 @@ for (const e of snapshot) {
     mp += item.quantity * settlement.distribution.distribute[item.id]
   }
   if (mp <= 0) continue
-  distribution[e.id] = Math.floor(mp)
+  distribution.push({id: e.id, mp: Math.floor(mp)})
 }
 
 fs.writeFileSync('distribution.json', JSON.stringify(distribution, null, 2))
