@@ -5,9 +5,6 @@ const { Client: UnbClient } = require('unb-api')
 
 const unbClient = new UnbClient(process.env.UNB_TOKEN)
 
-// unbインベントリのitemIdの配列（フィルタリング用）
-const targetItemIds = process.env.TARGET_ITEM_IDS.split(',')
-
 const sleep = msec => new Promise(resolve => setTimeout(resolve, msec))
 
 const guildID = process.env.DISCORD_GUILD_ID
@@ -21,7 +18,6 @@ const parsed = parseArgs({
 console.log(parsed.values)
 
 async function main() {
-  console.log(targetItemIds)
   const distribution = JSON.parse(fs.readFileSync('distribution.json'))
   // console.log(distribution)
   

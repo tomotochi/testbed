@@ -23,6 +23,7 @@ const disClient = new DisClient({
 })
 
 const guildId = process.env.DISCORD_GUILD_ID
+const raceRoleId = process.env.RACE_ROLE_ID
 
 disClient.once(Events.ClientReady, (client) => {
   console.log(`Logged in as ${client.user.tag}`)
@@ -49,6 +50,8 @@ async function main() {
     for ([k, v] of allMembers) {
       // botをスキップ
       if (v.user.bot) continue
+      // Roleを不所持ならスキップ
+      if (!v.roles.cache.find(role => role.id == raceRoleId)) continue
 
       results.push({
         id: v.user.id,

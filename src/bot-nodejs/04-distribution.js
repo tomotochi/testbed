@@ -7,6 +7,9 @@ const targetItemIds = [
   process.env.TARGET_ITEM_ID_1,
   process.env.TARGET_ITEM_ID_2,
   process.env.TARGET_ITEM_ID_3,
+  process.env.TARGET_ITEM_ID_4,
+  process.env.TARGET_ITEM_ID_5,
+  process.env.TARGET_ITEM_ID_6,
 ]
 console.log(`targetItemIds: ${targetItemIds}`)
 

@@ -6,3 +6,5 @@ yarn-error.log
 
 # Rise and fall rate race
 src/bot-nodejs/*.json
+!package.json
+!package-lock.json
