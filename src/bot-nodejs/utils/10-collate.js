@@ -1,3 +1,5 @@
+// 投票券のアイテムIDごとに、ユーザリストを作成する
+// <item-id>.txtが出力される。中身はCSV
 const fs = require('fs')
 
 const snapshotContent = fs.readFileSync('snapshot.json')

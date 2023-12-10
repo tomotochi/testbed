@@ -1,3 +1,5 @@
+// 何かの手違いや不具合で、05-distribute.jsの操作を巻き戻す際に使用する。
+
 const fs = require('fs')
 const { parseArgs } = require("util")
 
