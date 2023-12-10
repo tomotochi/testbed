@@ -20,7 +20,7 @@ console.log(`targetItemIds: ${targetItemIds}`)
 
 async function removeticket(){
 
-  const retryCountMax = 5
+  const retryCountMax = 0
   let processedMemberCount = 0
   
   for (let e of snapshot) {
