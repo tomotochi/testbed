@@ -9,6 +9,8 @@ const {
   SlashCommandBuilder,
 } = require('discord.js')
 
+const sleep = msec => new Promise(resolve => setTimeout(resolve, msec))
+
 // Discord botが動き続けてしまうため、Ctrl+Cで中断できるように
 process.on('SIGINT', () => {
   console.log("Caught interrupt signal");
@@ -20,6 +22,7 @@ const disClient = new DisClient({
     GatewayIntentBits.Guilds,
     GatewayIntentBits.GuildMembers,
   ],
+  
 })
 
 const guildId = process.env.DISCORD_GUILD_ID
@@ -32,6 +35,7 @@ disClient.once(Events.ClientReady, (client) => {
 async function main() {
   console.log('Logging in')
   await disClient.login(process.env.DISCORD_TOKEN)
+  await sleep(1000 * 5)
 
   // [{id, name, handle}]
   let results = []
@@ -44,6 +48,11 @@ async function main() {
     // 目的のギルドが見つかるまでスキップ
     if (v.guild.id != guildId) continue
 
+    const Role = v.guild.roles.cache.get(raceRoleId);
+
+    console.log(JSON.stringify(Role, null, 2))
+    console.log(Role.members)
+    
     // ギルドのすべてのメンバーを取得
     const allMembers = await v.guild.members.fetch()
     console.log(`allMembers: ${allMembers.size}`)
@@ -53,14 +62,13 @@ async function main() {
       // Roleを不所持ならスキップ
       if (!v.roles.cache.find(role => role.id == raceRoleId)) continue
 
-      results.push({
-        id: v.user.id,
-        name: v.user.username,
-        handle: v.user.globalName,
-      })
+      v.roles.remove(raceRoleId);
+
+      results.push(v.id)
+      await sleep(100)
     }
 
-    fs.writeFileSync('members.json', JSON.stringify(results, null, 2))
+    fs.writeFileSync('removeroles.json', JSON.stringify(results, null, 2))
     break
   }
 

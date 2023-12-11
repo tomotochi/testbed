@@ -1,13 +1,13 @@
 version: '3'
 
 services:
-  bot:
-    volumes:
-    # for development
-    - ./src/bot:/src/bot
-    working_dir: /src/bot
-    env_file:
-    - ./.env.development
+  # bot:
+  #   volumes:
+  #   # for development
+  #   - ./src/bot:/src/bot
+  #   working_dir: /src/bot
+  #   env_file:
+  #   - ./.env.development
   bot-nodejs:
     volumes:
     # for development
