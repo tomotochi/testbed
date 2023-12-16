@@ -62,7 +62,7 @@ async function main() {
       // Roleを不所持ならスキップ
       if (!v.roles.cache.find(role => role.id == raceRoleId)) continue
 
-      v.roles.remove(raceRoleId);
+      await v.roles.remove(raceRoleId);
 
       results.push(v.id)
       await sleep(100)
