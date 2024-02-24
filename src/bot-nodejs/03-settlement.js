@@ -68,3 +68,15 @@ fs.writeFileSync('settlement.json', JSON.stringify({
   total: {quantity: total, mp: total * 100},
   distribution,
 }, null, 2))
+
+// 投稿内容を出力
+console.log('投票券の購入状況:')
+for (let [k, v] of Object.entries(items)) {
+  console.log(`${k}: ${v}`)
+}
+console.log(`計: ${total}`)
+
+console.log('1投票券あたりのMPの配分:')
+for (let [k, v] of Object.entries(distribution.distribute)) {
+  console.log(`${k}: ${v}`)
+}
